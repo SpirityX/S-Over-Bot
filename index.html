@@ -343,7 +343,7 @@
 
         const chatBox = document.getElementById('chat-box');
         chatBox.innerHTML += `<div class="message user-message">
-            <img src="https://i.ibb.co/KmtrrLS/452834267.jpg" alt="User Avatar" class="avatar user-avatar">
+            <img src="bot.jpg" alt="User Avatar" class="avatar user-avatar">
             <div>${message}</div>
         </div>`;
         input.value = '';
@@ -369,7 +369,7 @@
 
             const aiMessageElement = document.createElement('div');
             aiMessageElement.classList.add('message', 'bot-message');
-            aiMessageElement.innerHTML = `<img src="https://i.imgur.com/VQCXoAC.jpeg" alt="AI" class="avatar ai-avatar">`;
+            aiMessageElement.innerHTML = `<img src="bot.jpg" alt="AI" class="avatar ai-avatar">`;
 
             // Vérification si le message contient du code
             if (/```([\s\S]+?)```/.test(aiMessage)) {
