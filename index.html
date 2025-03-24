@@ -360,8 +360,10 @@
 
             // Remplacement de certains mots
             aiMessage = aiMessage.replace(/Mistral AI/gi, "SPIRITY Ai");
-            aiMessage = aiMessage.replace(/ /gi, " ");
+            aiMessage = aiMessage.replace(/france/gi, "burkina ");
             aiMessage = aiMessage.replace(/basé france/gi, "basé au Burkina");
+            aiMessage = aiMessage.replace(/basé Français/gi, "basé au Burkinabè");
+            
            
 
             chatBox.removeChild(processingMessage);
