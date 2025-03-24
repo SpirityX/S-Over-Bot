@@ -331,7 +331,7 @@
         <input type="text" id="message-input" class="user-input" placeholder="Type your query here...">
         <button id="send-button" class="send-button"><i class="fa fa-send-o"></i></button>
     </div>
-   <script>
+    <script>
     document.querySelector("#send-button").addEventListener("click", () => {
         window.scrollTo(0, document.body.scrollHeight);
     });
@@ -360,37 +360,18 @@
 
             // Remplacement de certains mots
             aiMessage = aiMessage.replace(/Mistral AI/gi, "SPIRITY Ai");
-            aiMessage = aiMessage.replace(/française/gi, "burkinabè");
-
-            // Conversion des voyelles
-            aiMessage = aiMessage.replace(/[]/g, "");
+            aiMessage = aiMessage.replace(/ /gi, " ");
+            aiMessage = aiMessage.replace(/basé france/gi, "basé au Burkina");
+           
 
             chatBox.removeChild(processingMessage);
 
             const aiMessageElement = document.createElement('div');
             aiMessageElement.classList.add('message', 'bot-message');
-            aiMessageElement.innerHTML = `<img src="bot.jpg" alt="AI" class="avatar ai-avatar">`;
-
-            // Vérification si le message contient du code
-            if (/```([\s\S]+?)```/.test(aiMessage)) {
-                const codeContent = aiMessage.match(/```([\s\S]+?)```/)[1];
-                aiMessageElement.innerHTML += `<pre><code>${escapeHTML(codeContent)}</code></pre>`;
-
-                const copyButton = document.createElement('button');
-                copyButton.innerText = 'Copier';
-                copyButton.classList.add('copy-button');
-                copyButton.addEventListener('click', () => {
-                    navigator.clipboard.writeText(codeContent).then(() => {
-                        alert('Code copié !');
-                    }).catch(err => {
-                        console.error('Erreur de copie :', err);
-                    });
-                });
-
-                aiMessageElement.appendChild(copyButton);
-            } else {
-                aiMessageElement.innerHTML += `<div>${aiMessage}</div>`;
-            }
+            aiMessageElement.innerHTML = `
+                <img src="bot.jpg" alt="AI" class="avatar ai-avatar">
+                <div>${aiMessage}</div>
+            `;
 
             chatBox.appendChild(aiMessageElement);
             chatBox.scrollTop = chatBox.scrollHeight;
@@ -400,10 +381,6 @@
             processingMessage.innerText = 'Error: Failed to fetch AI response\nIf you’re facing this issue, please try again later';
         }
     });
-
-    function escapeHTML(str) {
-        return str.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    }
 
     document.getElementById('message-input').addEventListener('keypress', function(event) {
         if (event.key === 'Enter') {
@@ -439,11 +416,11 @@
     Swal.fire({
         title: "S•Over•Bot!🤞",
         text: "Développé par SPIRITY, ce bot est une fusion de puissance et de précision. Automatisation avancée, rapidité extrême, sécurité renforcée – il exécute sans faille. Conçu pour l’efficacité, il s’adapte, s’optimise et repousse les limites. Prêt à dominer le système ?",
-        imageUrl: "Spirity.png",
+        imageUrl: "https://i.ibb.co/B5JQg18p/spirity.jpg",
         imageWidth: 310,
         imageHeight: 150,
         imageAlt: "Image",
     });
 </script>
 </body>
-</html>
+    </html>
